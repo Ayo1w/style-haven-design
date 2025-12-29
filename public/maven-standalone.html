@@ -1,0 +1,2145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maven Daily Living | Smart Living for Every Woman</title>
+  <meta name="description" content="Your daily destination for wellness, beauty, home inspiration, fitness, style, and everything that makes life feel a little more joyful, confident, and effortless.">
+  <meta name="author" content="Maven Daily Living">
+  
+  <meta property="og:title" content="Maven Daily Living | Smart Living for Every Woman">
+  <meta property="og:description" content="Your daily destination for wellness, beauty, home inspiration, fitness, style, and everything that makes life feel a little more joyful, confident, and effortless.">
+  <meta property="og:type" content="website">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <style>
+    /* CSS Reset & Base */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --background: hsl(0, 0%, 100%);
+      --foreground: hsl(220, 20%, 20%);
+      --card: hsl(0, 0%, 100%);
+      --card-foreground: hsl(220, 20%, 20%);
+      --primary: hsl(178, 50%, 37%);
+      --primary-foreground: hsl(0, 0%, 100%);
+      --secondary: hsl(166, 24%, 59%);
+      --secondary-foreground: hsl(220, 20%, 20%);
+      --muted: hsl(160, 20%, 96%);
+      --muted-foreground: hsl(220, 10%, 50%);
+      --border: hsl(160, 15%, 90%);
+      --wellness: hsl(160, 45%, 45%);
+      --fitness: hsl(340, 65%, 55%);
+      --beauty: hsl(320, 40%, 60%);
+      --home: hsl(35, 55%, 55%);
+      --tech: hsl(210, 55%, 50%);
+      --food: hsl(25, 70%, 55%);
+      --pets: hsl(145, 40%, 50%);
+      --radius: 0.5rem;
+      --font-sans: 'Inter', system-ui, sans-serif;
+      --font-serif: 'Playfair Display', Georgia, serif;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--background);
+      color: var(--foreground);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font-serif);
+      line-height: 1.2;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .animate-fade-in {
+      animation: fadeIn 0.6s ease-out forwards;
+    }
+
+    .animate-delay-1 {
+      animation: fadeIn 0.6s ease-out 0.1s forwards;
+      opacity: 0;
+    }
+
+    .animate-delay-2 {
+      animation: fadeIn 0.6s ease-out 0.2s forwards;
+      opacity: 0;
+    }
+
+    .animate-delay-3 {
+      animation: fadeIn 0.6s ease-out 0.3s forwards;
+      opacity: 0;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--radius);
+      font-weight: 500;
+      font-size: 0.875rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      border: none;
+      font-family: var(--font-sans);
+    }
+
+    .btn-primary {
+      background-color: var(--primary);
+      color: var(--primary-foreground);
+    }
+
+    .btn-primary:hover {
+      opacity: 0.9;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--foreground);
+    }
+
+    .btn-outline:hover {
+      background: rgba(0,0,0,0.03);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--primary);
+    }
+
+    .btn-ghost:hover {
+      opacity: 0.8;
+    }
+
+    .btn-lg {
+      padding: 1rem 2rem;
+      font-size: 1rem;
+    }
+
+    /* Input */
+    .input {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      font-size: 0.875rem;
+      font-family: var(--font-sans);
+      background: var(--background);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 2px rgba(47, 143, 139, 0.1);
+    }
+
+    .input::placeholder {
+      color: var(--muted-foreground);
+    }
+
+    /* Header */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .header-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 4rem;
+    }
+
+    .logo {
+      font-family: var(--font-serif);
+      font-size: 1.75rem;
+      font-weight: 600;
+    }
+
+    .logo span {
+      color: var(--primary);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .icon-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: var(--radius);
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      color: var(--muted-foreground);
+      transition: color 0.2s;
+    }
+
+    .icon-btn:hover {
+      color: var(--foreground);
+    }
+
+    .menu-toggle {
+      display: flex;
+    }
+
+    .header-nav {
+      display: none;
+      background: var(--primary);
+      color: var(--primary-foreground);
+    }
+
+    .header-nav ul {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      height: 3rem;
+      align-items: center;
+      list-style: none;
+    }
+
+    .header-nav a {
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: opacity 0.2s;
+    }
+
+    .header-nav a:hover {
+      opacity: 0.8;
+    }
+
+    .subscribe-btn {
+      display: none;
+    }
+
+    .mobile-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--background);
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 1rem;
+      animation: fadeIn 0.2s ease-out;
+    }
+
+    .mobile-menu.active {
+      display: block;
+    }
+
+    .mobile-menu a {
+      display: block;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .mobile-menu a:last-child {
+      border-bottom: none;
+    }
+
+    @media (min-width: 1024px) {
+      .menu-toggle {
+        display: none;
+      }
+      
+      .header-nav {
+        display: block;
+      }
+
+      .subscribe-btn {
+        display: inline-flex;
+      }
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--muted) 0%, var(--background) 50%, rgba(127, 175, 164, 0.1) 100%);
+      padding: 4rem 0;
+    }
+
+    .hero-decorative {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .hero-blob-1 {
+      position: absolute;
+      top: -10rem;
+      right: -10rem;
+      width: 24rem;
+      height: 24rem;
+      background: rgba(47, 143, 139, 0.05);
+      border-radius: 50%;
+      filter: blur(60px);
+    }
+
+    .hero-blob-2 {
+      position: absolute;
+      bottom: -10rem;
+      left: -10rem;
+      width: 24rem;
+      height: 24rem;
+      background: rgba(127, 175, 164, 0.1);
+      border-radius: 50%;
+      filter: blur(60px);
+    }
+
+    .hero-content {
+      position: relative;
+      max-width: 56rem;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: rgba(47, 143, 139, 0.1);
+      color: var(--primary);
+      font-size: 0.875rem;
+      font-weight: 500;
+      border-radius: 9999px;
+      margin-bottom: 2rem;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 span {
+      display: block;
+      color: var(--primary);
+    }
+
+    .hero-subtitle {
+      font-size: 1.125rem;
+      color: var(--muted-foreground);
+      max-width: 42rem;
+      margin: 0 auto 2.5rem;
+    }
+
+    .hero-ctas {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .hero-fade {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 4rem;
+      background: linear-gradient(to top, var(--background), transparent);
+    }
+
+    @media (min-width: 768px) {
+      .hero {
+        padding: 6rem 0;
+      }
+
+      .hero h1 {
+        font-size: 3.5rem;
+      }
+
+      .hero-subtitle {
+        font-size: 1.25rem;
+      }
+
+      .hero-ctas {
+        flex-direction: row;
+        justify-content: center;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .hero {
+        padding: 8rem 0;
+      }
+
+      .hero h1 {
+        font-size: 4.5rem;
+      }
+    }
+
+    /* Editor Intro */
+    .editor-intro {
+      padding: 4rem 0;
+      background: var(--background);
+    }
+
+    .editor-intro-content {
+      max-width: 48rem;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .editor-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      background: rgba(47, 143, 139, 0.1);
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+    }
+
+    .editor-intro h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .editor-intro h2 span {
+      color: var(--primary);
+    }
+
+    .editor-intro p {
+      color: var(--muted-foreground);
+      font-size: 1.125rem;
+    }
+
+    .editor-badges {
+      margin-top: 2.5rem;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      color: var(--muted-foreground);
+      font-size: 0.875rem;
+    }
+
+    .editor-badge {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .editor-badge-dot {
+      width: 0.5rem;
+      height: 0.5rem;
+      border-radius: 50%;
+      background: var(--primary);
+    }
+
+    .editor-badge-dot.secondary {
+      background: var(--secondary);
+    }
+
+    @media (min-width: 768px) {
+      .editor-intro {
+        padding: 5rem 0;
+      }
+
+      .editor-intro h2 {
+        font-size: 1.875rem;
+      }
+
+      .editor-intro p {
+        font-size: 1.25rem;
+      }
+    }
+
+    /* Featured Section */
+    .featured {
+      padding: 4rem 0;
+      background: var(--background);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 2.5rem;
+    }
+
+    .section-header h2 {
+      font-size: 1.875rem;
+    }
+
+    .featured-grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .featured-main {
+      position: relative;
+      border-radius: 1rem;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+    }
+
+    .featured-main img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+
+    .featured-main:hover img {
+      transform: scale(1.05);
+    }
+
+    .featured-main-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(44, 50, 56, 0.9), rgba(44, 50, 56, 0.4), transparent);
+    }
+
+    .featured-main-content {
+      position: absolute;
+      inset: 0;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      color: var(--primary-foreground);
+    }
+
+    .category-badge {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: white;
+      width: fit-content;
+      margin-bottom: 1rem;
+    }
+
+    .category-badge.wellness { background: var(--wellness); }
+    .category-badge.fitness { background: var(--fitness); }
+    .category-badge.beauty { background: var(--beauty); }
+    .category-badge.home { background: var(--home); }
+    .category-badge.tech { background: var(--tech); }
+    .category-badge.food { background: var(--food); }
+    .category-badge.pets { background: var(--pets); }
+
+    .featured-main h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
+      transition: color 0.2s;
+    }
+
+    .featured-main:hover h3 {
+      color: var(--primary);
+    }
+
+    .featured-main p {
+      opacity: 0.8;
+      display: none;
+    }
+
+    .read-time {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.875rem;
+      opacity: 0.7;
+    }
+
+    .featured-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .featured-card {
+      display: flex;
+      gap: 1rem;
+      padding: 1rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 0.75rem;
+      transition: background 0.2s;
+    }
+
+    .featured-card:hover {
+      background: var(--muted);
+    }
+
+    .featured-card-img {
+      flex-shrink: 0;
+      width: 6rem;
+      height: 6rem;
+      border-radius: 0.5rem;
+      overflow: hidden;
+    }
+
+    .featured-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s;
+    }
+
+    .featured-card:hover .featured-card-img img {
+      transform: scale(1.05);
+    }
+
+    .featured-card-content {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .featured-card h3 {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+      transition: color 0.2s;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .featured-card:hover h3 {
+      color: var(--primary);
+    }
+
+    @media (min-width: 768px) {
+      .featured {
+        padding: 5rem 0;
+      }
+
+      .section-header h2 {
+        font-size: 2.25rem;
+      }
+
+      .featured-main {
+        aspect-ratio: auto;
+      }
+
+      .featured-main h3 {
+        font-size: 2rem;
+      }
+
+      .featured-main p {
+        display: block;
+        max-width: 32rem;
+        margin-bottom: 1rem;
+      }
+
+      .featured-card-img {
+        width: 8rem;
+        height: 8rem;
+      }
+
+      .featured-card h3 {
+        font-size: 1.125rem;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .featured-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .featured-main {
+        grid-row: span 2;
+      }
+
+      .featured-main-content {
+        padding: 2rem;
+      }
+
+      .featured-main h3 {
+        font-size: 2.5rem;
+      }
+    }
+
+    /* Category Grid */
+    .category-grid-section {
+      padding: 4rem 0;
+      background: rgba(160, 180, 170, 0.05);
+    }
+
+    .category-grid-section h2 {
+      text-align: center;
+      font-size: 1.875rem;
+      margin-bottom: 1rem;
+    }
+
+    .category-grid-subtitle {
+      text-align: center;
+      color: var(--muted-foreground);
+      max-width: 32rem;
+      margin: 0 auto 3rem;
+    }
+
+    .category-grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .category-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1.5rem;
+      border-radius: 0.75rem;
+      transition: all 0.3s;
+    }
+
+    .category-card:hover {
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+
+    .category-card.wellness-card { background: rgba(83, 147, 121, 0.1); color: var(--wellness); }
+    .category-card.wellness-card:hover { background: rgba(83, 147, 121, 0.2); }
+    .category-card.fitness-card { background: rgba(207, 89, 123, 0.1); color: var(--fitness); }
+    .category-card.fitness-card:hover { background: rgba(207, 89, 123, 0.2); }
+    .category-card.beauty-card { background: rgba(188, 122, 178, 0.1); color: var(--beauty); }
+    .category-card.beauty-card:hover { background: rgba(188, 122, 178, 0.2); }
+    .category-card.home-card { background: rgba(191, 143, 77, 0.1); color: var(--home); }
+    .category-card.home-card:hover { background: rgba(191, 143, 77, 0.2); }
+    .category-card.tech-card { background: rgba(73, 134, 194, 0.1); color: var(--tech); }
+    .category-card.tech-card:hover { background: rgba(73, 134, 194, 0.2); }
+    .category-card.food-card { background: rgba(207, 131, 79, 0.1); color: var(--food); }
+    .category-card.food-card:hover { background: rgba(207, 131, 79, 0.2); }
+    .category-card.pets-card { background: rgba(91, 166, 121, 0.1); color: var(--pets); }
+    .category-card.pets-card:hover { background: rgba(91, 166, 121, 0.2); }
+
+    .category-card-icon {
+      flex-shrink: 0;
+    }
+
+    .category-card-content {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .category-card h3 {
+      font-size: 1.125rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .category-card p {
+      font-size: 0.875rem;
+      opacity: 0.8;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .arrow-icon {
+      opacity: 0;
+      transform: translateX(-0.5rem);
+      transition: all 0.2s;
+    }
+
+    .category-card:hover .arrow-icon {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    @media (min-width: 640px) {
+      .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 768px) {
+      .category-grid-section {
+        padding: 5rem 0;
+      }
+
+      .category-grid-section h2 {
+        font-size: 2.25rem;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .category-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (min-width: 1280px) {
+      .category-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    /* Content Section (Articles) */
+    .content-section {
+      padding: 4rem 0;
+      background: var(--background);
+      border-top: 1px solid var(--border);
+    }
+
+    .content-section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 2.5rem;
+    }
+
+    .content-section-title {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .content-section-bar {
+      width: 0.25rem;
+      height: 2rem;
+      border-radius: 9999px;
+    }
+
+    .content-section-bar.wellness { background: var(--wellness); }
+    .content-section-bar.fitness { background: var(--fitness); }
+    .content-section-bar.beauty { background: var(--beauty); }
+    .content-section-bar.home { background: var(--home); }
+    .content-section-bar.tech { background: var(--tech); }
+    .content-section-bar.food { background: var(--food); }
+    .content-section-bar.pets { background: var(--pets); }
+
+    .content-section h2 {
+      font-size: 1.5rem;
+    }
+
+    .articles-grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .article-card {
+      display: block;
+    }
+
+    .article-card-img {
+      position: relative;
+      aspect-ratio: 4/3;
+      border-radius: 0.75rem;
+      overflow: hidden;
+      margin-bottom: 1rem;
+    }
+
+    .article-card-img img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+
+    .article-card:hover .article-card-img img {
+      transform: scale(1.05);
+    }
+
+    .article-card-img-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(44, 50, 56, 0.2), transparent);
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .article-card:hover .article-card-img-overlay {
+      opacity: 1;
+    }
+
+    .article-card h3 {
+      font-size: 1.125rem;
+      margin-bottom: 0.5rem;
+      transition: color 0.2s;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .article-card:hover h3 {
+      color: var(--primary);
+    }
+
+    .article-card p {
+      color: var(--muted-foreground);
+      font-size: 0.875rem;
+      margin-bottom: 0.75rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .article-card .read-time {
+      color: var(--muted-foreground);
+    }
+
+    @media (min-width: 640px) {
+      .articles-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 768px) {
+      .content-section {
+        padding: 5rem 0;
+      }
+
+      .content-section h2 {
+        font-size: 1.875rem;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .articles-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    /* Newsletter CTA */
+    .newsletter-cta {
+      padding: 5rem 0;
+      background: linear-gradient(135deg, rgba(47, 143, 139, 0.05) 0%, rgba(127, 175, 164, 0.1) 50%, rgba(47, 143, 139, 0.05) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .newsletter-decorative-1 {
+      position: absolute;
+      top: 2.5rem;
+      left: 2.5rem;
+      width: 8rem;
+      height: 8rem;
+      background: rgba(47, 143, 139, 0.1);
+      border-radius: 50%;
+      filter: blur(40px);
+    }
+
+    .newsletter-decorative-2 {
+      position: absolute;
+      bottom: 2.5rem;
+      right: 2.5rem;
+      width: 10rem;
+      height: 10rem;
+      background: rgba(127, 175, 164, 0.2);
+      border-radius: 50%;
+      filter: blur(40px);
+    }
+
+    .newsletter-content {
+      position: relative;
+      max-width: 32rem;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .newsletter-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 3.5rem;
+      height: 3.5rem;
+      border-radius: 50%;
+      background: rgba(47, 143, 139, 0.1);
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+    }
+
+    .newsletter-cta h2 {
+      font-size: 1.875rem;
+      margin-bottom: 1rem;
+    }
+
+    .newsletter-cta > .container > .newsletter-content > p {
+      color: var(--muted-foreground);
+      font-size: 1.125rem;
+      margin-bottom: 2rem;
+      max-width: 28rem;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .newsletter-form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      max-width: 28rem;
+      margin: 0 auto;
+    }
+
+    .newsletter-form .input {
+      height: 3rem;
+    }
+
+    .newsletter-form .btn {
+      height: 3rem;
+    }
+
+    .newsletter-disclaimer {
+      color: var(--muted-foreground);
+      font-size: 0.875rem;
+      margin-top: 1rem;
+    }
+
+    @media (min-width: 640px) {
+      .newsletter-form {
+        flex-direction: row;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .newsletter-cta {
+        padding: 7rem 0;
+      }
+
+      .newsletter-cta h2 {
+        font-size: 2.5rem;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .newsletter-cta h2 {
+        font-size: 3rem;
+      }
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--foreground);
+      color: var(--background);
+    }
+
+    .footer-newsletter {
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      padding: 3rem 0;
+    }
+
+    .footer-newsletter-content {
+      max-width: 32rem;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .footer-newsletter h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-newsletter p {
+      opacity: 0.7;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-newsletter form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      max-width: 24rem;
+      margin: 0 auto;
+    }
+
+    .footer-newsletter .input {
+      background: rgba(255,255,255,0.1);
+      border-color: rgba(255,255,255,0.2);
+      color: var(--background);
+    }
+
+    .footer-newsletter .input::placeholder {
+      color: rgba(255,255,255,0.5);
+    }
+
+    .footer-main {
+      padding: 3rem 0;
+    }
+
+    .footer-grid {
+      display: grid;
+      gap: 2rem;
+    }
+
+    .footer-brand p {
+      opacity: 0.7;
+      font-size: 0.875rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .social-links a {
+      opacity: 0.6;
+      transition: all 0.2s;
+    }
+
+    .social-links a:hover {
+      opacity: 1;
+      color: var(--primary);
+    }
+
+    .footer-column h4 {
+      font-size: 1.125rem;
+      margin-bottom: 1rem;
+    }
+
+    .footer-column ul {
+      list-style: none;
+    }
+
+    .footer-column li {
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-column a {
+      opacity: 0.7;
+      font-size: 0.875rem;
+      transition: all 0.2s;
+    }
+
+    .footer-column a:hover {
+      opacity: 1;
+      color: var(--primary);
+    }
+
+    .footer-contact p {
+      opacity: 0.7;
+      font-size: 0.875rem;
+      margin-bottom: 1rem;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding: 1.5rem 0;
+    }
+
+    .footer-bottom-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      font-size: 0.875rem;
+      opacity: 0.6;
+      text-align: center;
+    }
+
+    @media (min-width: 640px) {
+      .footer-newsletter form {
+        flex-direction: row;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .footer-newsletter h3 {
+        font-size: 1.875rem;
+      }
+
+      .footer-bottom-content {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .footer-grid {
+        grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      }
+    }
+
+    /* Utility */
+    .hide-sm {
+      display: none;
+    }
+
+    @media (min-width: 640px) {
+      .hide-sm {
+        display: inline-flex;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <div class="header-top">
+        <button class="icon-btn menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu">
+          <i data-lucide="menu" id="menu-icon"></i>
+        </button>
+        
+        <a href="/" class="logo">Maven<span>.</span></a>
+        
+        <div class="header-actions">
+          <button class="icon-btn" aria-label="Search">
+            <i data-lucide="search"></i>
+          </button>
+          <button class="btn btn-primary subscribe-btn">Subscribe</button>
+        </div>
+      </div>
+    </div>
+    
+    <nav class="header-nav">
+      <div class="container">
+        <ul>
+          <li><a href="#wellness">Wellness</a></li>
+          <li><a href="#fitness">Fitness</a></li>
+          <li><a href="#beauty">Beauty</a></li>
+          <li><a href="#home">Home & Décor</a></li>
+          <li><a href="#tech">Tech</a></li>
+          <li><a href="#food">Food</a></li>
+          <li><a href="#pets">Pets</a></li>
+        </ul>
+      </div>
+    </nav>
+    
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="#wellness" onclick="closeMenu()">Wellness</a>
+      <a href="#fitness" onclick="closeMenu()">Fitness</a>
+      <a href="#beauty" onclick="closeMenu()">Beauty</a>
+      <a href="#home" onclick="closeMenu()">Home & Décor</a>
+      <a href="#tech" onclick="closeMenu()">Tech</a>
+      <a href="#food" onclick="closeMenu()">Food</a>
+      <a href="#pets" onclick="closeMenu()">Pets</a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-decorative">
+      <div class="hero-blob-1"></div>
+      <div class="hero-blob-2"></div>
+    </div>
+    
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge animate-fade-in">
+          <i data-lucide="sparkles" style="width: 16px; height: 16px;"></i>
+          <span>Your Daily Lifestyle Companion</span>
+        </div>
+        
+        <h1 class="animate-delay-1">
+          Smart Living for
+          <span>Every Woman</span>
+        </h1>
+        
+        <p class="hero-subtitle animate-delay-2">
+          Your daily destination for wellness, beauty, home inspiration, fitness, style, and everything that makes life feel a little more joyful, confident, and effortless.
+        </p>
+        
+        <div class="hero-ctas animate-delay-3">
+          <button class="btn btn-primary btn-lg">
+            Start Exploring
+            <i data-lucide="arrow-right" style="width: 20px; height: 20px;"></i>
+          </button>
+          <button class="btn btn-outline btn-lg">
+            Discover Today's Top Picks
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="hero-fade"></div>
+  </section>
+
+  <!-- Editor Intro -->
+  <section class="editor-intro">
+    <div class="container">
+      <div class="editor-intro-content">
+        <div class="editor-icon">
+          <i data-lucide="heart" style="width: 24px; height: 24px;"></i>
+        </div>
+        
+        <h2>Welcome to <span>Maven Daily Living</span></h2>
+        
+        <p>
+          Where modern women come for smart tips, trusted recommendations, and feel-good inspiration that actually fits real life. Whether you're leveling up your wellness, refreshing your home, rebooting your fitness routine, or simply looking for something beautiful — we've got you covered, every single day.
+        </p>
+        
+        <div class="editor-badges">
+          <div class="editor-badge">
+            <div class="editor-badge-dot"></div>
+            <span>Daily Updates</span>
+          </div>
+          <div class="editor-badge">
+            <div class="editor-badge-dot secondary"></div>
+            <span>Expert Picks</span>
+          </div>
+          <div class="editor-badge">
+            <div class="editor-badge-dot"></div>
+            <span>Real Reviews</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Section -->
+  <section class="featured">
+    <div class="container">
+      <div class="section-header">
+        <h2>Featured Today</h2>
+        <button class="btn btn-ghost hide-sm">
+          View All
+          <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
+        </button>
+      </div>
+      
+      <div class="featured-grid">
+        <a href="#" class="featured-main">
+          <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=800&auto=format&fit=crop&q=60" alt="Morning Rituals">
+          <div class="featured-main-overlay"></div>
+          <div class="featured-main-content">
+            <span class="category-badge wellness">Wellness</span>
+            <h3>10 Morning Rituals That Actually Boost Your Energy All Day</h3>
+            <p>Simple, science-backed habits that transform your mornings without requiring you to wake up at 5 AM.</p>
+            <div class="read-time">
+              <i data-lucide="clock" style="width: 16px; height: 16px;"></i>
+              <span>6 min read</span>
+            </div>
+          </div>
+        </a>
+        
+        <div class="featured-sidebar">
+          <a href="#" class="featured-card">
+            <div class="featured-card-img">
+              <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?w=800&auto=format&fit=crop&q=60" alt="Skincare">
+            </div>
+            <div class="featured-card-content">
+              <span class="category-badge beauty">Beauty</span>
+              <h3>The Only 5 Skincare Products You Really Need</h3>
+              <div class="read-time">
+                <i data-lucide="clock" style="width: 14px; height: 14px;"></i>
+                <span>4 min read</span>
+              </div>
+            </div>
+          </a>
+          
+          <a href="#" class="featured-card">
+            <div class="featured-card-img">
+              <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=800&auto=format&fit=crop&q=60" alt="Meal Prep">
+            </div>
+            <div class="featured-card-content">
+              <span class="category-badge food">Food</span>
+              <h3>Quick & Easy Meal Prep Ideas for Busy Weeknights</h3>
+              <div class="read-time">
+                <i data-lucide="clock" style="width: 14px; height: 14px;"></i>
+                <span>5 min read</span>
+              </div>
+            </div>
+          </a>
+          
+          <a href="#" class="featured-card">
+            <div class="featured-card-img">
+              <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&auto=format&fit=crop&q=60" alt="Home Decor">
+            </div>
+            <div class="featured-card-content">
+              <span class="category-badge home">Home</span>
+              <h3>Small Space, Big Style: Apartment Decorating Tips</h3>
+              <div class="read-time">
+                <i data-lucide="clock" style="width: 14px; height: 14px;"></i>
+                <span>7 min read</span>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Category Grid -->
+  <section class="category-grid-section">
+    <div class="container">
+      <h2>Explore by Category</h2>
+      <p class="category-grid-subtitle">Dive into the topics that matter most to you</p>
+      
+      <div class="category-grid">
+        <a href="#wellness" class="category-card wellness-card">
+          <div class="category-card-icon">
+            <i data-lucide="sparkles" style="width: 24px; height: 24px;"></i>
+          </div>
+          <div class="category-card-content">
+            <h3>
+              Wellness
+              <i data-lucide="arrow-right" class="arrow-icon" style="width: 16px; height: 16px;"></i>
+            </h3>
+            <p>Science-backed habits, self-care, mindset, and everyday wellness that fits real life.</p>
+          </div>
+        </a>
+        
+        <a href="#fitness" class="category-card fitness-card">
+          <div class="category-card-icon">
+            <i data-lucide="dumbbell" style="width: 24px; height: 24px;"></i>
+          </div>
+          <div class="category-card-content">
+            <h3>
+              Fitness & Weight Loss
+              <i data-lucide="arrow-right" class="arrow-icon" style="width: 16px; height: 16px;"></i>
+            </h3>
+            <p>Practical workouts, routines, and motivation without extremes.</p>
+          </div>
+        </a>
+        
+        <a href="#beauty" class="category-card beauty-card">
+          <div class="category-card-icon">
+            <i data-lucide="palette" style="width: 24px; height: 24px;"></i>
+          </div>
+          <div class="category-card-content">
+            <h3>
+              Beauty
+              <i data-lucide="arrow-right" class="arrow-icon" style="width: 16px; height: 16px;"></i>
+            </h3>
+            <p>Skincare, makeup, hair, and glow-up essentials with honest product breakdowns.</p>
+          </div>
+        </a>
+        
+        <a href="#home" class="category-card home-card">
+          <div class="category-card-icon">
+            <i data-lucide="home" style="width: 24px; height: 24px;"></i>
+          </div>
+          <div class="category-card-content">
+            <h3>
+              Home & Décor
+              <i data-lucide="arrow-right" class="arrow-icon" style="width: 16px; height: 16px;"></i>
+            </h3>
+            <p>Cozy, stylish, functional spaces with simple décor and organization ideas.</p>
+          </div>
+        </a>
+        
+        <a href="#tech" class="category-card tech-card">
+          <div class="category-card-icon">
+            <i data-lucide="cpu" style="width: 24px; height: 24px;"></i>
+          </div>
+          <div class="category-card-content">
+            <h3>
+              Gadgets & Tech
+              <i data-lucide="arrow-right" class="arrow-icon" style="width: 16px; height: 16px;"></i>
+            </h3>
+            <p>Smart, everyday tech explained clearly and simply (no tech-speak).</p>
+          </div>
+        </a>
+        
+        <a href="#food" class="category-card food-card">
+          <div class="category-card-icon">
+            <i data-lucide="utensils-crossed" style="width: 24px; height: 24px;"></i>
+          </div>
+          <div class="category-card-content">
+            <h3>
+              Food & Recipes
+              <i data-lucide="arrow-right" class="arrow-icon" style="width: 16px; height: 16px;"></i>
+            </h3>
+            <p>Easy, delicious meals and kitchen tips for busy women.</p>
+          </div>
+        </a>
+        
+        <a href="#pets" class="category-card pets-card">
+          <div class="category-card-icon">
+            <i data-lucide="paw-print" style="width: 24px; height: 24px;"></i>
+          </div>
+          <div class="category-card-content">
+            <h3>
+              Pets
+              <i data-lucide="arrow-right" class="arrow-icon" style="width: 16px; height: 16px;"></i>
+            </h3>
+            <p>Care tips, wellness, and trusted picks for dogs and cats.</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Wellness Section -->
+  <section id="wellness" class="content-section">
+    <div class="container">
+      <div class="content-section-header">
+        <div class="content-section-title">
+          <div class="content-section-bar wellness"></div>
+          <h2>Wellness Essentials</h2>
+        </div>
+        <button class="btn btn-ghost hide-sm">
+          See All
+          <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
+        </button>
+      </div>
+      
+      <div class="articles-grid">
+        <a href="#" class="article-card">
+          <div class="article-card-img">
+            <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=600&auto=format&fit=crop&q=60" alt="Morning Meditation">
+            <div class="article-card-img-overlay"></div>
+          </div>
+          <h3>The 5-Minute Morning Meditation That Changes Everything</h3>
+          <p>Start your day with clarity and calm using this simple practice.</p>
+          <div class="read-time">
+            <i data-lucide="clock" style="width: 14px; height: 14px;"></i>
+            <span>4 min read</span>
+          </div>
+        </a>
+        
+        <a href="#" class="article-card">
+          <div class="article-card-img">
+            <img src="https://images.unsplash.com/photo-1531353826977-0941b4779a1c?w=600&auto=format&fit=crop&q=60" alt="Sleep Better">
+            <div class="article-card-img-overlay"></div>
+          </div>
+          <h3>Sleep Better Tonight: 8 Expert-Approved Tips</h3>
+          <p>Transform your sleep quality with these science-backed strategies.</p>
+          <div class="read-time">
+            <i data-lucide="clock" style="width: 14px; height: 14px;"></i>
+            <span>6 min read</span>
+          </div>
+        </a>
+        
+        <a href="#" class="article-card">
+          <div class="article-card-img">
+            <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=600&auto=format&fit=crop&q=60" alt="Stress Less">
+            <div class="article-card-img-overlay"></div>
+          </div>
+          <h3>Stress Less: Natural Remedies That Actually Work</h3>
+          <p>Discover calming techniques that fit into your busy lifestyle.</p>
+          <div class="read-time">
+            <i data-lucide="clock" style="width: 14px; height: 14px;"></i>
+            <span>5 min read</span>
+          </div>
+        </a>
+        
+        <a href="#" class="article-card">
+          <div class="article-card-img">
+            <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&auto=format&fit=crop&q=60" alt="Healthy Habits">
+            <div class="article-card-img-overlay"></div>
+          </div>
+          <h3>Building Healthy Habits That Stick</h3>
+          <p>The psychology behind lasting change and how to make it work for you.</p>
+          <div class="read-time">
+            <i data-lucide="clock" style="width: 14px; height: 14px;"></i>
+            <span>7 min read</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fitness Section -->
+  <section id="fitness" class="content-section">
+    <div class="container">
+      <div class="content-section-header">
+        <div class="content-section-title">
+          <div class="content-section-bar fitness"></div>
+          <h2>Fitness & Weight Loss</h2>
+        </div>
+        <button class="btn btn-ghost hide-sm">
+          See All
+          <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
+        </button>
+      </div>
+      
+      <div class="articles-grid">
+        <a href="#" class="article-card">
+          <div class="article-card-img">
+            <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=600&auto=format&fit=crop&q=60" alt="Quick Workouts">
+            <div class="article-card-img-overlay"></div>
+          </div>
+          <h3>15-Minute Workouts That Actually Deliver Results</h3>
+          <p>No gym required. These quick routines fit any schedule.</p>
+          <div class="read-time">
+            <i data-lucide="clock" style="width: 14px; height: 14px;"></i>
+            <span>5 min read</span>
+          </div>
+        </a>
+        
+        <a href="#" class="article-card">
+          <div class="article-card-img">
+            <img src="https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?w=600&auto=format&fit=crop&q=60" alt="Walking">
+            <div class="article-card-img-overlay"></div>
+          </div>
+          <h3>Walking for Weight Loss: The Underrated Exercise</h3>
+          <p>How a simple daily walk can transform your fitness journey.</p>
+          <div class="read-time">
+            <i data-lucide="clock" style="width: 14px; height: 14px;"></i>
+            <span>4 min read</span>
+          </div>
+        </a>
+        
+        <a href="#" class="article-card">
+          <div class="article-card-img">
+            <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&auto=format&fit=crop&q=60" alt="Strength Training">
+            <div class="article-card-img-overlay"></div>
+          </div>
+          <h3>Strength Training for Beginners: Where to Start</h3>
+          <p>Build confidence and muscle with this friendly guide.</p>
+          <div class="read-time">
+            <i data-lucide="clock" style="width: 14px; height: 14px;"></i>
+            <span>8 min read</span>
+          </div>
+        </a>
+        
+        <a href="#" class="article-card">
+          <div class="article-card-img">
+            <img src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?w=600&auto=format&fit=crop&q=60" alt="Recovery">
+            <div class="article-card-img-overlay"></div>
+          </div>
+          <h3>Post-Workout Recovery: What Your Body Really Needs</h3>
+          <p>Maximize your results with proper recovery techniques.</p>
+          <div class="read-time">
+            <i data-lucide="clock" style="width: 14px; height: 14px;"></i>
+            <span>5 min read</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Beauty Section -->
+  <section id="beauty" class="content-section">
+    <div class="container">
+      <div class="content-section-header">
+        <div class="content-section-title">
+          <div class="content-section-bar beauty"></div>
+          <h2>Beauty Breakdowns</h2>
+        </div>
+        <button class="btn btn-ghost hide-sm">
+          See All
+          <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
+        </button>
+      </div>
+      
+      <div class="articles-grid">
+        <a href="#" class="article-card">
+          <div class="article-card-img">
+            <img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=600&auto=format&fit=crop&q=60" alt="Glass Skin">
+            <div class="article-card-img-overlay"></div>
+          </div>
+          <h3>The Glass Skin Routine: A Complete Guide</h3>
+          <p>Achieve that coveted dewy, luminous complexion.</p>
+          <div class="read-time">
+            <i data-lucide="clock" style="width: 14px; height: 14px;"></i>
+            <span>6 min read</span>
+          </div>
+        </a>
+        
+        <a href="#" class="article-card">
+          <div class="article-card-img">
+            <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=600&auto=format&fit=crop&q=60" alt="Drugstore Dupes">
+            <div class="article-card-img-overlay"></div>
+          </div>
+          <h3>Best Drugstore Dupes for High-End Products</h3>
+          <p>Get luxury results without the luxury price tag.</p>
+          <div class="read-time">
+            <i data-lucide="clock" style="width: 14px; height: 14px;"></i>
+            <span>5 min read</span>
+          </div>
+        </a>
+        
+        <a href="#" class="article-card">
+          <div class="article-card-img">
+            <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=600&auto=format&fit=crop&q=60" alt="Hair Care">
+            <div class="article-card-img-overlay"></div>
+          </div>
+          <h3>Hair Care Mistakes You're Probably Making</h3>
+          <p>Simple fixes for healthier, shinier locks.</p>
+          <div class="read-time">
+            <i data-lucide="clock" style="width: 14px; height: 14px;"></i>
+            <span>4 min read</span>
+          </div>
+        </a>
+        
+        <a href="#" class="article-card">
+          <div class="article-card-img">
+            <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=600&auto=format&fit=crop&q=60" alt="Quick Makeup">
+            <div class="article-card-img-overlay"></div>
+          </div>
+          <h3>5-Minute Makeup for Busy Mornings</h3>
+          <p>Look polished in minutes with these quick tips.</p>
+          <div class="read-time">
+            <i data-lucide="clock" style="width: 14px; height: 14px;"></i>
+            <span>3 min read</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter CTA -->
+  <section class="newsletter-cta">
+    <div class="newsletter-decorative-1"></div>
+    <div class="newsletter-decorative-2"></div>
+    
+    <div class="container">
+      <div class="newsletter-content">
+        <div class="newsletter-icon">
+          <i data-lucide="sparkles" style="width: 28px; height: 28px;"></i>
+        </div>
+        
+        <h2>Never Miss a Tip</h2>
+        
+        <p>Join thousands of women getting weekly inspiration, product picks, and lifestyle tips delivered to their inbox.</p>
+        
+        <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing!');">
+          <input type="email" class="input" placeholder="Enter your email address" required>
+          <button type="submit" class="btn btn-primary">
+            <i data-lucide="mail" style="width: 16px; height: 16px;"></i>
+            Subscribe
+          </button>
+        </form>
+        
+        <p class="newsletter-disclaimer">Unsubscribe anytime. We respect your privacy.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Home Section -->
+  <section id="home" class="content-section">
+    <div class="container">
+      <div class="content-section-header">
+        <div class="content-section-title">
+          <div class="content-section-bar home"></div>
+          <h2>Home & Décor Inspiration</h2>
+        </div>
+        <button class="btn btn-ghost hide-sm">
+          See All
+          <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
+        </button>
+      </div>
+      
+      <div class="articles-grid">
+        <a href="#" class="article-card">
+          <div class="article-card-img">
+            <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=600&auto=format&fit=crop&q=60" alt="Living Room">
+            <div class="article-card-img-overlay"></div>
+          </div>
+          <h3>Cozy Living Room Ideas for Any Budget</h3>
+          <p>Transform your space into a warm, inviting retreat.</p>
+          <div class="read-time">
+            <i data-lucide="clock" style="width: 14px; height: 14px;"></i>
+            <span>6 min read</span>
+          </div>
+        </a>
+        
+        <a href="#" class="article-card">
+          <div class="article-card-img">
+            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&auto=format&fit=crop&q=60" alt="Decluttering">
+            <div class="article-card-img-overlay"></div>
+          </div>
+          <h3>The Art of Decluttering: Room by Room Guide</h3>
+          <p>Create calm spaces with intentional organization.</p>
+          <div class="read-time">
+            <i data-lucide="clock" style="width: 14px; height: 14px;"></i>
+            <span>8 min read</span>
+          </div>
+        </a>
+        
+        <a href="#" class="article-card">
+          <div class="article-card-img">
+            <img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=600&auto=format&fit=crop&q=60" alt="Indoor Plants">
+            <div class="article-card-img-overlay"></div>
+          </div>
+          <h3>Indoor Plants That Thrive on Neglect</h3>
+          <p>Green your space even if you forget to water.</p>
+          <div class="read-time">
+            <i data-lucide="clock" style="width: 14px; height: 14px;"></i>
+            <span>4 min read</span>
+          </div>
+        </a>
+        
+        <a href="#" class="article-card">
+          <div class="article-card-img">
+            <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&auto=format&fit=crop&q=60" alt="Kitchen Organization">
+            <div class="article-card-img-overlay"></div>
+          </div>
+          <h3>Small Kitchen Organization Hacks</h3>
+          <p>Maximize every inch of your cooking space.</p>
+          <div class="read-time">
+            <i data-lucide="clock" style="width: 14px; height: 14px;"></i>
+            <span>5 min read</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tech Section -->
+  <section id="tech" class="content-section">
+    <div class="container">
+      <div class="content-section-header">
+        <div class="content-section-title">
+          <div class="content-section-bar tech"></div>
+          <h2>Tech That Makes Life Easier</h2>
+        </div>
+        <button class="btn btn-ghost hide-sm">
+          See All
+          <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
+        </button>
+      </div>
+      
+      <div class="articles-grid">
+        <a href="#" class="article-card">
+          <div class="article-card-img">
+            <img src="https://images.unsplash.com/photo-1558089687-f282ffcbc126?w=600&auto=format&fit=crop&q=60" alt="Smart Home">
+            <div class="article-card-img-overlay"></div>
+          </div>
+          <h3>Smart Home Gadgets Worth the Investment</h3>
+          <p>Tech that actually makes daily life easier.</p>
+          <div class="read-time">
+            <i data-lucide="clock" style="width: 14px; height: 14px;"></i>
+            <span>6 min read</span>
+          </div>
+        </a>
+        
+        <a href="#" class="article-card">
+          <div class="article-card-img">
+            <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&auto=format&fit=crop&q=60" alt="Productivity Apps">
+            <div class="article-card-img-overlay"></div>
+          </div>
+          <h3>Best Apps for Productivity and Wellness</h3>
+          <p>Digital tools to streamline your routine.</p>
+          <div class="read-time">
+            <i data-lucide="clock" style="width: 14px; height: 14px;"></i>
+            <span>5 min read</span>
+          </div>
+        </a>
+        
+        <a href="#" class="article-card">
+          <div class="article-card-img">
+            <img src="https://images.unsplash.com/photo-1468495244123-6c6c332eeece?w=600&auto=format&fit=crop&q=60" alt="Tech Gifts">
+            <div class="article-card-img-overlay"></div>
+          </div>
+          <h3>Tech Gift Guide: Practical Picks She'll Love</h3>
+          <p>Thoughtful gadgets for every budget.</p>
+          <div class="read-time">
+            <i data-lucide="clock" style="width: 14px; height: 14px;"></i>
+            <span>4 min read</span>
+          </div>
+        </a>
+        
+        <a href="#" class="article-card">
+          <div class="article-card-img">
+            <img src="https://images.unsplash.com/photo-1563206767-5b18f218e8de?w=600&auto=format&fit=crop&q=60" alt="Privacy">
+            <div class="article-card-img-overlay"></div>
+          </div>
+          <h3>Protecting Your Privacy Online: Simple Steps</h3>
+          <p>Stay safe without becoming a tech expert.</p>
+          <div class="read-time">
+            <i data-lucide="clock" style="width: 14px; height: 14px;"></i>
+            <span>7 min read</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Food Section -->
+  <section id="food" class="content-section">
+    <div class="container">
+      <div class="content-section-header">
+        <div class="content-section-title">
+          <div class="content-section-bar food"></div>
+          <h2>Recipes & Kitchen Inspiration</h2>
+        </div>
+        <button class="btn btn-ghost hide-sm">
+          See All
+          <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
+        </button>
+      </div>
+      
+      <div class="articles-grid">
+        <a href="#" class="article-card">
+          <div class="article-card-img">
+            <img src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=600&auto=format&fit=crop&q=60" alt="Weeknight Dinners">
+            <div class="article-card-img-overlay"></div>
+          </div>
+          <h3>30-Minute Dinners for Weeknight Wins</h3>
+          <p>Delicious meals ready before you can say 'takeout.'</p>
+          <div class="read-time">
+            <i data-lucide="clock" style="width: 14px; height: 14px;"></i>
+            <span>5 min read</span>
+          </div>
+        </a>
+        
+        <a href="#" class="article-card">
+          <div class="article-card-img">
+            <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600&auto=format&fit=crop&q=60" alt="Meal Prep">
+            <div class="article-card-img-overlay"></div>
+          </div>
+          <h3>Meal Prep Sunday: A Beginner's Guide</h3>
+          <p>Set yourself up for a week of easy eating.</p>
+          <div class="read-time">
+            <i data-lucide="clock" style="width: 14px; height: 14px;"></i>
+            <span>8 min read</span>
+          </div>
+        </a>
+        
+        <a href="#" class="article-card">
+          <div class="article-card-img">
+            <img src="https://images.unsplash.com/photo-1478145046317-39f10e56b5e9?w=600&auto=format&fit=crop&q=60" alt="Healthy Snacks">
+            <div class="article-card-img-overlay"></div>
+          </div>
+          <h3>Healthy Snacks That Actually Satisfy</h3>
+          <p>Beat the 3pm slump with these tasty options.</p>
+          <div class="read-time">
+            <i data-lucide="clock" style="width: 14px; height: 14px;"></i>
+            <span>4 min read</span>
+          </div>
+        </a>
+        
+        <a href="#" class="article-card">
+          <div class="article-card-img">
+            <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&auto=format&fit=crop&q=60" alt="Kitchen Tools">
+            <div class="article-card-img-overlay"></div>
+          </div>
+          <h3>Kitchen Tools That Save Time and Effort</h3>
+          <p>Essential gadgets for efficient cooking.</p>
+          <div class="read-time">
+            <i data-lucide="clock" style="width: 14px; height: 14px;"></i>
+            <span>5 min read</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pets Section -->
+  <section id="pets" class="content-section">
+    <div class="container">
+      <div class="content-section-header">
+        <div class="content-section-title">
+          <div class="content-section-bar pets"></div>
+          <h2>For the Pets We Love</h2>
+        </div>
+        <button class="btn btn-ghost hide-sm">
+          See All
+          <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
+        </button>
+      </div>
+      
+      <div class="articles-grid">
+        <a href="#" class="article-card">
+          <div class="article-card-img">
+            <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=600&auto=format&fit=crop&q=60" alt="Dog Care">
+            <div class="article-card-img-overlay"></div>
+          </div>
+          <h3>Keeping Your Dog Happy and Healthy</h3>
+          <p>Essential care tips every pet parent should know.</p>
+          <div class="read-time">
+            <i data-lucide="clock" style="width: 14px; height: 14px;"></i>
+            <span>6 min read</span>
+          </div>
+        </a>
+        
+        <a href="#" class="article-card">
+          <div class="article-card-img">
+            <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=600&auto=format&fit=crop&q=60" alt="Cat Care">
+            <div class="article-card-img-overlay"></div>
+          </div>
+          <h3>Cat Care 101: Beyond the Basics</h3>
+          <p>Understanding what your feline friend really needs.</p>
+          <div class="read-time">
+            <i data-lucide="clock" style="width: 14px; height: 14px;"></i>
+            <span>5 min read</span>
+          </div>
+        </a>
+        
+        <a href="#" class="article-card">
+          <div class="article-card-img">
+            <img src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=600&auto=format&fit=crop&q=60" alt="Pet Products">
+            <div class="article-card-img-overlay"></div>
+          </div>
+          <h3>Best Pet Products We've Tested This Year</h3>
+          <p>Honest reviews of top-rated pet essentials.</p>
+          <div class="read-time">
+            <i data-lucide="clock" style="width: 14px; height: 14px;"></i>
+            <span>7 min read</span>
+          </div>
+        </a>
+        
+        <a href="#" class="article-card">
+          <div class="article-card-img">
+            <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=600&auto=format&fit=crop&q=60" alt="Pet Wellness">
+            <div class="article-card-img-overlay"></div>
+          </div>
+          <h3>Pet Wellness: Signs Your Pet Needs a Vet</h3>
+          <p>Know when it's time for professional care.</p>
+          <div class="read-time">
+            <i data-lucide="clock" style="width: 14px; height: 14px;"></i>
+            <span>4 min read</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-newsletter">
+      <div class="container">
+        <div class="footer-newsletter-content">
+          <h3>Stay Inspired Daily</h3>
+          <p>Get our best tips, recommendations, and inspiration delivered straight to your inbox.</p>
+          <form onsubmit="event.preventDefault(); alert('Thank you for subscribing!');">
+            <input type="email" class="input" placeholder="Enter your email" required>
+            <button type="submit" class="btn btn-primary">
+              <i data-lucide="mail" style="width: 16px; height: 16px;"></i>
+              Subscribe
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-main">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a href="/" class="logo" style="display: inline-block; margin-bottom: 1rem;">Maven<span>.</span></a>
+            <p>Smart living for every woman. Your daily destination for wellness, beauty, and inspiration.</p>
+            <div class="social-links">
+              <a href="#" aria-label="Facebook"><i data-lucide="facebook" style="width: 20px; height: 20px;"></i></a>
+              <a href="#" aria-label="Instagram"><i data-lucide="instagram" style="width: 20px; height: 20px;"></i></a>
+              <a href="#" aria-label="Twitter"><i data-lucide="twitter" style="width: 20px; height: 20px;"></i></a>
+              <a href="#" aria-label="YouTube"><i data-lucide="youtube" style="width: 20px; height: 20px;"></i></a>
+            </div>
+          </div>
+          
+          <div class="footer-column">
+            <h4>Categories</h4>
+            <ul>
+              <li><a href="#wellness">Wellness</a></li>
+              <li><a href="#fitness">Fitness & Weight Loss</a></li>
+              <li><a href="#beauty">Beauty</a></li>
+              <li><a href="#home">Home & Décor</a></li>
+              <li><a href="#tech">Gadgets & Tech</a></li>
+              <li><a href="#food">Food & Recipes</a></li>
+              <li><a href="#pets">Pets</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-column">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Contact</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms of Service</a></li>
+              <li><a href="#">Advertise</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-column footer-contact">
+            <h4>Get In Touch</h4>
+            <p>Have questions or feedback? We'd love to hear from you.</p>
+            <button class="btn btn-outline" style="color: var(--background); border-color: rgba(255,255,255,0.2);">Contact Us</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <div class="container">
+        <div class="footer-bottom-content">
+          <p>© 2024 Maven Daily Living. All rights reserved.</p>
+          <p>Made with love for modern women everywhere.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Initialize Lucide icons
+    lucide.createIcons();
+    
+    // Mobile menu toggle
+    let menuOpen = false;
+    
+    function toggleMenu() {
+      menuOpen = !menuOpen;
+      const menu = document.getElementById('mobile-menu');
+      const icon = document.getElementById('menu-icon');
+      
+      if (menuOpen) {
+        menu.classList.add('active');
+        icon.setAttribute('data-lucide', 'x');
+      } else {
+        menu.classList.remove('active');
+        icon.setAttribute('data-lucide', 'menu');
+      }
+      
+      lucide.createIcons();
+    }
+    
+    function closeMenu() {
+      menuOpen = false;
+      document.getElementById('mobile-menu').classList.remove('active');
+      document.getElementById('menu-icon').setAttribute('data-lucide', 'menu');
+      lucide.createIcons();
+    }
+  </script>
+</body>
+</html>
